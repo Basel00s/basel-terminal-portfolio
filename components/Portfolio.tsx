@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useState } from "react";
+import IntroSequence from "@/components/IntroSequence";
 import Navbar from "@/components/sections/Navbar";
 import Hero from "@/components/sections/Hero";
 import Projects from "@/components/sections/Projects";
@@ -12,11 +13,14 @@ import SakuraBackground from "@/components/ui/SakuraBackground";
 
 export default function Portfolio() {
   const [lightMode, setLightMode] = useState(false);
+  const [introComplete, setIntroComplete] = useState(false);
+  const finishIntro = useCallback(() => setIntroComplete(true), []);
 
   return (
     <main data-theme={lightMode ? "light" : "dark"} className="portfolio-shell relative min-h-screen overflow-hidden">
+      {!introComplete && <IntroSequence onComplete={finishIntro} />}
       <SakuraBackground />
-      <Navbar lightMode={lightMode} onToggleTheme={() => setLightMode((value) => !value)} />
+      {introComplete && <Navbar lightMode={lightMode} onToggleTheme={() => setLightMode((value) => !value)} />}
       <div className="relative z-10 mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12">
         <Hero />
         <Projects />
