@@ -44,3 +44,6 @@
 .katana-handle{position:absolute;left:5px;top:77%;width:8px;height:22%;border-radius:2px;background:repeating-linear-gradient(135deg,#e6e8ee 0 3px,#252a38 3px 6px)}
 @keyframes katana-strike{0%{top:-40%;opacity:0;transform:translateX(-50%) rotate(8deg)}25%{opacity:1}72%{top:48%;transform:translateX(-50%) rotate(0)}100%{top:48%;opacity:0;transform:translateX(-50%) rotate(-5deg)}}
 @media(prefers-reduced-motion:reduce){.intro-overlay{display:none}}
+
+.is-slicing .intro-screen{animation:terminal-slice .92s cubic-bezier(.76,0,.24,1) forwards;transform-origin:center}
+@keyframes terminal-slice{0%{clip-path:inset(0 0 0 0);opacity:1}55%{clip-path:inset(48% 0 48% 0);opacity:1}100%{clip-path:inset(50% 0 50% 0);opacity:0}}
